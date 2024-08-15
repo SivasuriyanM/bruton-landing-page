@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy } from "react";
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
+import AboutUs from "./components/AboutUs";
+import Services from "./components/Services";
+import Testimonials from "./components/Testimonials";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+
+const Team = lazy(() => import("./components/Team"));
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <HeroSection />
+      <AboutUs />
+      <Services />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Team />
+      </Suspense>
+      <Testimonials />
+      <Contact />
+      <Footer />
     </div>
   );
 }
