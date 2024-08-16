@@ -1,22 +1,23 @@
 import React from "react";
+import { Typography, Link, Container } from "@mui/material";
 
-const Footer = () => {
+function Footer() {
   return (
-    <footer className="footer bg-dark text-white text-center py-3">
-      <p>&copy; 2024 BRUTON Technologies. All rights reserved.</p>
-      <div className="social-links">
-        <a href="#" className="text-white mr-3">
-          Facebook
-        </a>
-        <a href="#" className="text-white mr-3">
-          Twitter
-        </a>
-        <a href="#" className="text-white">
-          LinkedIn
-        </a>
-      </div>
-    </footer>
+    <Container
+      maxWidth="lg"
+      style={{
+        marginTop: "50px",
+        padding: "20px",
+        backgroundColor: "#2f65ad",
+        color: "white",
+      }}
+    >
+      <Typography variant="body1">© 2024 BRUTON Technologies</Typography>
+      <Link href="#" style={{ color: "white" }}>
+        Privacy Policy
+      </Link>
+    </Container>
   );
-};
+}
 
-export default Footer;
+export default React.memo(Footer);

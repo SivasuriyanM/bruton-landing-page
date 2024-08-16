@@ -1,40 +1,43 @@
 import React from "react";
-import TeamMember from "./TeamMember";
-import image from "../assets/images/TeamMember.jpg";
-const teamMember = [
+import { Grid, Card, CardContent, Typography, Avatar } from "@mui/material";
+
+const teamMembers = [
+  { name: "John Doe", role: "CEO", image: "https://via.placeholder.com/150" },
+  { name: "Jane Smith", role: "CTO", image: "https://via.placeholder.com/150" },
   {
-    name: "John Doe",
-    role: "CEO",
-    image: image,
-  },
-  {
-    name: "Jane Smith",
-    role: "CTO",
-    image: image,
+    name: "Mike Johnson",
+    role: "Lead Developer",
+    image: "https://via.placeholder.com/150",
   },
 ];
 
-const Team = () => {
+function Team() {
   return (
-    <section id="team" className="container py-5">
-      <h2 className="text-center">Our Team</h2>
-      <div className="row">
-        {teamMember.map((member, index) => (
-          <div className="col-md-6">
-            <div className="card">
-              <TeamMember
-                key={index}
-                src={member.image}
-                name={member.name}
-                alt={member.name}
-                role={member.role}
-              />
-            </div>
-          </div>
+    <div id="team" style={{ marginTop: "30px" }}>
+      <Typography variant="h4" gutterBottom>
+        Meet Our Team
+      </Typography>
+      <Grid container spacing={3}>
+        {teamMembers.map((member, index) => (
+          <Grid item xs={12} md={4} key={index}>
+            <Card>
+              <CardContent style={{ textAlign: "center" }}>
+                <Avatar
+                  src={member.image}
+                  alt={member.name}
+                  style={{ width: 100, height: 100, margin: "0 auto" }}
+                />
+                <Typography variant="h6" style={{ marginTop: "10px" }}>
+                  {member.name}
+                </Typography>
+                <Typography variant="body2">{member.role}</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         ))}
-      </div>
-    </section>
+      </Grid>
+    </div>
   );
-};
+}
 
-export default Team;
+export default React.memo(Team);

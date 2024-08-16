@@ -1,29 +1,36 @@
 import React from "react";
+import { Typography, Button, Grid } from "@mui/material";
 
-const HeroSection = () => {
+function HeroSection() {
   return (
-    <section
-      id="home"
-      className="jumbotron jumbotron-fluid text-white"
-      style={{
-        backgroundImage: "url(assets/images/hero-bg.jpg)",
-        backgroundSize: "cover",
-      }}
+    <Grid
+      id="hero"
+      container
+      style={{ backgroundColor: "#2f65ad", padding: "50px", color: "white" }}
     >
-      <div className="container text-center">
-        <h1 className="display-4">Welcome to BRUTON Technologies</h1>
-        <p className="lead">
-          Your partner in Software Development and Cybersecurity
-        </p>
-        <a href="#services" className="btn btn-primary btn-lg mr-2">
+      <Grid item xs={12} md={6}>
+        <Typography variant="h2">Welcome to BRUTON Technologies</Typography>
+        <Typography variant="h6">
+          Leading in Software Development and Cybersecurity
+        </Typography>
+        <Button
+          variant="contained"
+          color="secondary"
+          style={{ marginTop: "20px" }}
+        >
           Learn More
-        </a>
-        <a href="#contact" className="btn btn-outline-light btn-lg">
+        </Button>
+        <Button
+          variant="outlined"
+          color="secondary"
+          href="#contact"
+          style={{ marginLeft: "20px", marginTop: "20px" }}
+        >
           Contact Us
-        </a>
-      </div>
-    </section>
+        </Button>
+      </Grid>
+    </Grid>
   );
-};
+}
 
-export default HeroSection;
+export default React.memo(HeroSection);

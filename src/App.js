@@ -1,29 +1,34 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import AboutUs from "./components/AboutUs";
 import Services from "./components/Services";
-import Testimonials from "./components/Testimonials";
-import Contact from "./components/Contact";
+import ContactForm from "./components/Contact";
 import Footer from "./components/Footer";
+import { Container } from "@mui/material";
 
-const Team = lazy(() => import("./components/Team"));
+const Testimonials = React.lazy(() => import("./components/Testimonials"));
+const Team = React.lazy(() => import("./components/Team"));
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Navbar />
-      <HeroSection />
-      <AboutUs />
-      <Services />
-      <Suspense fallback={<div>Loading...</div>}>
-        <Team />
-      </Suspense>
-      <Testimonials />
-      <Contact />
+      <Container maxWidth="lg">
+        <HeroSection />
+        <AboutUs />
+        <Services />
+        <Suspense fallback={<div>Loading Testimonials...</div>}>
+          <Testimonials />
+        </Suspense>
+        <Suspense fallback={<div>Loading Team...</div>}>
+          <Team />
+        </Suspense>
+        <ContactForm />
+      </Container>
       <Footer />
     </div>
   );
 }
 
-export default App;
+export default React.memo(App);

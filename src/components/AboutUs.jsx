@@ -1,15 +1,21 @@
 import React from "react";
+import { Typography, Card, CardContent } from "@mui/material";
 
-const AboutUs = () => {
+function AboutUs() {
   return (
-    <section id="about" className="container py-5">
-      <h2 className="text-center">About Us</h2>
-      <p className="text-center">
-        BRUTON Technologies is a leading provider of software development and
-        cybersecurity solutions.
-      </p>
-    </section>
+    <Card id="about" style={{ marginTop: "30px" }}>
+      <CardContent>
+        <Typography variant="h4" gutterBottom>
+          About BRUTON Technologies
+        </Typography>
+        <Typography variant="body1">
+          At BRUTON Technologies, our mission is to deliver top-notch software
+          solutions and cybersecurity services that empower businesses to
+          succeed in the digital world.
+        </Typography>
+      </CardContent>
+    </Card>
   );
-};
+}
 
-export default AboutUs;
+export default React.memo(AboutUs);

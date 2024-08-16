@@ -1,25 +1,30 @@
 import React from "react";
+import { Grid, Card, CardContent, Typography } from "@mui/material";
 
-const Services = React.memo(() => {
+function Services() {
+  const services = [
+    { name: "Web Development", description: "High-quality web solutions." },
+    {
+      name: "Software Solutions",
+      description: "Custom software for all needs.",
+    },
+    { name: "Cybersecurity", description: "Keeping your data secure." },
+  ];
+
   return (
-    <section id="services" className="container py-5">
-      <h2 className="text-center">Our Services</h2>
-      <div className="row">
-        <div className="col-md-4">
-          <h3>Web Development</h3>
-          <p>Custom web development services.</p>
-        </div>
-        <div className="col-md-4">
-          <h3>Software Solutions</h3>
-          <p>Comprehensive software solutions.</p>
-        </div>
-        <div className="col-md-4">
-          <h3>Cybersecurity</h3>
-          <p>Robust cybersecurity services.</p>
-        </div>
-      </div>
-    </section>
+    <Grid id="services" container spacing={3} style={{ marginTop: "30px" }}>
+      {services.map((service, index) => (
+        <Grid item xs={12} md={4} key={index}>
+          <Card>
+            <CardContent>
+              <Typography variant="h5">{service.name}</Typography>
+              <Typography variant="body2">{service.description}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
   );
-});
+}
 
-export default Services;
+export default React.memo(Services);

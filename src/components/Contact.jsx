@@ -1,69 +1,98 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  setName,
-  setEmail,
-  setMessage,
-  clearForm,
-  selectForm,
-} from "../redux/formSlice";
+import React, { useEffect } from "react";
+import { TextField, Button, Grid } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { setName, setEmail, setSubject, setMessage, clearForm } from "../store";
+import Snackbar from "@mui/material/SnackbarContent";
 
-const Contact = () => {
+function ContactForm() {
   const dispatch = useDispatch();
-  const form = useSelector(selectForm);
+  const form = useSelector((state) => state.form);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", form);
+    console.log(form);
+
+    setOpen(true);
     dispatch(clearForm());
   };
+  const [open, setOpen] = React.useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setOpen(false);
+    }, 5000);
+  }, [open]);
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const action = (
+    <React.Fragment>
+      <Button color="secondary" size="small" onClick={handleClose}>
+        CLOSE
+      </Button>
+    </React.Fragment>
+  );
 
   return (
-    <div className="container">
-      <h2>Contact Us</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
+    <form id="contact" onSubmit={handleSubmit}>
+      <Grid container spacing={3} style={{ marginTop: "30px" }}>
+        <Grid item xs={12} md={6}>
+          <TextField
+            label="Name"
+            fullWidth
             value={form.name}
             onChange={(e) => dispatch(setName(e.target.value))}
           />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            label="Email"
+            fullWidth
             value={form.email}
             onChange={(e) => dispatch(setEmail(e.target.value))}
           />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="message" className="form-label">
-            Message
-          </label>
-          <textarea
-            className="form-control"
-            id="message"
-            rows="3"
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Subject"
+            fullWidth
+            value={form.subject}
+            onChange={(e) => dispatch(setSubject(e.target.value))}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Message"
+            fullWidth
+            multiline
+            rows={4}
             value={form.message}
             onChange={(e) => dispatch(setMessage(e.target.value))}
-          ></textarea>
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </div>
-  );
-};
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button type="submit" variant="contained" color="primary">
+            Submit
+          </Button>
+        </Grid>
+      </Grid>
 
-export default Contact;
+      {open ? (
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message="Sent"
+          action={action}
+        />
+      ) : (
+        ""
+      )}
+    </form>
+  );
+}
+
+export default React.memo(ContactForm);
