@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Card, CardContent, Grid, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Grid,
+  Button,
+} from "@mui/material";
 
 const testimonialsData = [
   {
@@ -31,41 +38,56 @@ function Testimonials() {
   }, []);
 
   return (
-    <div style={{ marginTop: "30px" }}>
-      <Typography variant="h4" gutterBottom>
-        What Our Clients Say
-      </Typography>
-      <Grid container justifyContent="center">
-        <Grid item xs={12} md={8}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6">
-                "{testimonialsData[currentTestimonial].feedback}"
-              </Typography>
-              <Typography
-                variant="body2"
-                style={{ marginTop: "10px", fontStyle: "italic" }}
-              >
-                - {testimonialsData[currentTestimonial].name}
-              </Typography>
-            </CardContent>
-          </Card>
+    <Box
+      sx={{
+        height: "100vh",
+        backgroundColor: "#f0f4ff ",
+        backgroundSize: "cover",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        textAlign: "center",
+        margin: "5px 0",
+        padding: "0 10px",
+      }}
+    >
+      <div style={{ marginTop: "30px" }}>
+        <Typography variant="h4" gutterBottom>
+          What Our Clients Say
+        </Typography>
+        <Grid container justifyContent="center">
+          <Grid item xs={12} md={8}>
+            <Card>
+              <CardContent>
+                <Typography variant="h6">
+                  "{testimonialsData[currentTestimonial].feedback}"
+                </Typography>
+                <Typography
+                  variant="body2"
+                  style={{ marginTop: "10px", fontStyle: "italic" }}
+                >
+                  - {testimonialsData[currentTestimonial].name}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
-      </Grid>
-      <Grid container justifyContent="center" style={{ marginTop: "20px" }}>
-        {testimonialsData.map((_, index) => (
-          <Button
-            key={index}
-            variant={currentTestimonial === index ? "contained" : "outlined"}
-            color="primary"
-            style={{ margin: "0 5px" }}
-            onClick={() => setCurrentTestimonial(index)}
-          >
-            {index + 1}
-          </Button>
-        ))}
-      </Grid>
-    </div>
+        <Grid container justifyContent="center" style={{ marginTop: "20px" }}>
+          {testimonialsData.map((_, index) => (
+            <Button
+              key={index}
+              variant={currentTestimonial === index ? "contained" : "outlined"}
+              color="primary"
+              style={{ margin: "0 5px" }}
+              onClick={() => setCurrentTestimonial(index)}
+            >
+              {index + 1}
+            </Button>
+          ))}
+        </Grid>
+      </div>
+    </Box>
   );
 }
 

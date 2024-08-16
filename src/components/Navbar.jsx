@@ -8,7 +8,6 @@ import {
   Drawer,
   List,
   ListItem,
-  ListItemText,
 } from "@mui/material";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -32,7 +31,7 @@ function Navbar() {
   ];
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         <Typography variant="h6" style={{ flexGrow: 1 }}>
           BRUTON Technologies

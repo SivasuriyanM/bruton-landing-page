@@ -1,22 +1,26 @@
 import React from "react";
-import { Typography, Link, Container } from "@mui/material";
+import { Box, Typography, Link } from "@mui/material";
 
 function Footer() {
   return (
-    <Container
-      maxWidth="lg"
-      style={{
-        marginTop: "50px",
-        padding: "20px",
-        backgroundColor: "#2f65ad",
+    <Box
+      sx={{
+        bgcolor: "primary.main",
         color: "white",
+        p: 3,
+        textAlign: "center",
       }}
     >
-      <Typography variant="body1">© 2024 BRUTON Technologies</Typography>
-      <Link href="#" style={{ color: "white" }}>
+      <Typography variant="body2">
+        © {new Date().getFullYear()} BRUTON Technologies. All Rights Reserved.
+      </Typography>
+      <Link href="#" color="inherit" sx={{ mx: 1 }}>
         Privacy Policy
       </Link>
-    </Container>
+      <Link href="#" color="inherit" sx={{ mx: 1 }}>
+        Terms of Service
+      </Link>
+    </Box>
   );
 }
 
