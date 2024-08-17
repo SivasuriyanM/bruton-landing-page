@@ -7,7 +7,7 @@ import {
   Typography,
   Avatar,
 } from "@mui/material";
-
+import { motion } from "framer-motion";
 const teamMembers = [
   {
     name: "Bob Johnson",
@@ -44,19 +44,21 @@ function Team() {
         <Grid container spacing={3}>
           {teamMembers.map((member, index) => (
             <Grid item xs={12} md={4} key={index}>
-              <Card>
-                <CardContent style={{ textAlign: "center" }}>
-                  <Avatar
-                    src={member.image}
-                    alt={member.name}
-                    style={{ width: 100, height: 100, margin: "0 auto" }}
-                  />
-                  <Typography variant="h6" style={{ marginTop: "10px" }}>
-                    {member.name}
-                  </Typography>
-                  <Typography variant="body2">{member.role}</Typography>
-                </CardContent>
-              </Card>
+              <motion.div whileHover={{ scale: 1.1 }}>
+                <Card>
+                  <CardContent style={{ textAlign: "center" }}>
+                    <Avatar
+                      src={member.image}
+                      alt={member.name}
+                      style={{ width: 100, height: 100, margin: "0 auto" }}
+                    />
+                    <Typography variant="h6" style={{ marginTop: "10px" }}>
+                      {member.name}
+                    </Typography>
+                    <Typography variant="body2">{member.role}</Typography>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </Grid>
           ))}
         </Grid>

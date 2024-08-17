@@ -7,7 +7,7 @@ import {
   Grid,
   Button,
 } from "@mui/material";
-
+import { motion } from "framer-motion";
 const testimonialsData = [
   {
     name: "Alice Brown",
@@ -53,9 +53,15 @@ function Testimonials() {
       }}
     >
       <div style={{ marginTop: "30px" }}>
-        <Typography variant="h4" gutterBottom>
-          What Our Clients Say
-        </Typography>
+        <motion.div
+          initial={{ x: 100 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <Typography variant="h4" gutterBottom>
+            What Our Clients Say
+          </Typography>
+        </motion.div>
         <Grid container justifyContent="center">
           <Grid item xs={12} md={8}>
             <Card>

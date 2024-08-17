@@ -1,34 +1,68 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  MotionValue,
+} from "framer-motion";
 import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-import AboutUs from "./components/AboutUs";
-import Services from "./components/Services";
-import ContactForm from "./components/Contact";
 import Footer from "./components/Footer";
-import { Container } from "@mui/material";
+import AboutUs from "./components/AboutUs";
+import ContactForm from "./components/Contact";
+import Services from "./components/Services";
+import Team from "./components/Team";
+import Testimonials from "./components/Testimonials";
+import "./App.css";
 
-const Testimonials = React.lazy(() => import("./components/Testimonials"));
-const Team = React.lazy(() => import("./components/Team"));
+const HeroSection = React.lazy(() => import("./components/HeroSection"));
 
-function App() {
+// Parallax hook for motion effects
+function useParallax(value, distance) {
+  return useTransform(value, [0, 1], [-distance, distance]);
+}
+
+// Parallax effect wrapper for each section
+function SectionWrapper({ id, Component }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useParallax(scrollYProgress, 300);
+
   return (
-    <div>
-      <Navbar />
-      <Container maxWidth="lg">
-        <HeroSection />
-        <AboutUs />
-        <Services />
-        <Suspense fallback={<div>Loading Testimonials...</div>}>
-          <Testimonials />
-        </Suspense>
-        <Suspense fallback={<div>Loading Team...</div>}>
-          <Team />
-        </Suspense>
-        <ContactForm />
-      </Container>
-      <Footer />
-    </div>
+    <section>
+      <div ref={ref}>
+        <Component />
+      </div>
+      <motion.h2 style={{ y }}>{`#${id}`}</motion.h2>
+    </section>
   );
 }
 
-export default React.memo(App);
+function App() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  return (
+    <>
+      <Navbar />
+
+      <Suspense fallback={<div>Loading...</div>}>
+        <SectionWrapper id={"HeroSection"} Component={HeroSection} />
+        <SectionWrapper id={"AboutUs"} Component={AboutUs} />
+        <SectionWrapper id={"Services"} Component={Services} />
+        <SectionWrapper id={"Team"} Component={Team} />
+        <SectionWrapper id={"Testimonials"} Component={Testimonials} />
+        <SectionWrapper id={"Contact"} Component={ContactForm} />
+      </Suspense>
+
+      <motion.div className="progress" style={{ scaleX }} />
+      <Footer />
+    </>
+  );
+}
+
+export default App;

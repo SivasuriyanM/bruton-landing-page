@@ -12,6 +12,7 @@ import {
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import { motion } from "framer-motion";
 
 function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -33,47 +34,53 @@ function Navbar() {
   return (
     <AppBar position="fixed">
       <Toolbar>
-        <Typography variant="h6" style={{ flexGrow: 1 }}>
-          BRUTON Technologies
-        </Typography>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+        >
+          <Typography variant="h6" style={{ flexGrow: 1 }}>
+            BRUTON Technologies
+          </Typography>
 
-        {/* Mobile View: Display Drawer */}
-        {isMobile ? (
-          <>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={handleDrawerToggle}
-            >
-              =
-            </IconButton>
-            <Drawer
-              anchor="right"
-              open={drawerOpen}
-              onClose={handleDrawerToggle}
-            >
-              <List>
-                {menuItems.map((item, index) => (
-                  <ListItem button key={index} onClick={handleDrawerToggle}>
-                    <Button color="inherit" key={index} href={item.link}>
-                      {item.label}
-                    </Button>
-                  </ListItem>
-                ))}
-              </List>
-            </Drawer>
-          </>
-        ) : (
-          // Desktop View: Display Buttons
-          <>
-            {menuItems.map((item, index) => (
-              <Button color="inherit" key={index} href={item.link}>
-                {item.label}
-              </Button>
-            ))}
-          </>
-        )}
+          {/* Mobile View: Display Drawer */}
+          {isMobile ? (
+            <>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={handleDrawerToggle}
+              >
+                =
+              </IconButton>
+              <Drawer
+                anchor="right"
+                open={drawerOpen}
+                onClose={handleDrawerToggle}
+              >
+                <List>
+                  {menuItems.map((item, index) => (
+                    <ListItem button key={index} onClick={handleDrawerToggle}>
+                      <Button color="inherit" key={index} href={item.link}>
+                        {item.label}
+                      </Button>
+                    </ListItem>
+                  ))}
+                </List>
+              </Drawer>
+            </>
+          ) : (
+            // Desktop View: Display Buttons
+            <>
+              {menuItems.map((item, index) => (
+                <Button color="inherit" key={index} href={item.link}>
+                  {item.label}
+                </Button>
+              ))}
+            </>
+          )}
+        </motion.div>
       </Toolbar>
     </AppBar>
   );
