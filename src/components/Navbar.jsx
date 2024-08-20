@@ -40,7 +40,7 @@ function Navbar() {
           transition={{ duration: 2 }}
         >
           <Typography variant="h6" style={{ flexGrow: 1 }}>
-            BRUTON Technologies
+            BRUTON
           </Typography>
 
           {/* Mobile View: Display Drawer */}

@@ -18,7 +18,7 @@ function AboutUs() {
               transition={{ duration: 1.5 }}
             >
               <Typography variant="h4" sx={{ mb: 2 }}>
-                About BRUTON Technologies
+                About US
               </Typography>
             </motion.div>
             <motion.div

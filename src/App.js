@@ -8,6 +8,7 @@ import ContactForm from "./components/Contact";
 import Services from "./components/Services";
 import Team from "./components/Team";
 import Testimonials from "./components/Testimonials";
+
 import "./App.css";
 
 const HeroSection = React.lazy(() => import("./components/HeroSection"));
@@ -29,7 +30,7 @@ function SectionWrapper({ id, Component }) {
         id={id}
         sx={{
           height: "100vh",
-          backgroundColor: "#f0f4ff ",
+
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
