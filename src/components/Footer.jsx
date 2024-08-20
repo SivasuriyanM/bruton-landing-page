@@ -9,6 +9,7 @@ function Footer() {
         color: "white",
         p: 3,
         textAlign: "center",
+        position: "static",
       }}
     >
       <Typography variant="body2">

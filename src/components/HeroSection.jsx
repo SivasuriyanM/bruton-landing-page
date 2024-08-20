@@ -40,7 +40,7 @@ function HeroSection() {
               opacity: 0.9,
             }}
           >
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={12}>
               <motion.div
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}

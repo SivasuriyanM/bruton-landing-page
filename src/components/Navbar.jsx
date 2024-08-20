@@ -32,7 +32,7 @@ function Navbar() {
   ];
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="sticky">
       <Toolbar>
         <motion.div
           initial={{ opacity: 0 }}

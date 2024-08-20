@@ -11,9 +11,10 @@ body {
   --red: #fe0222;
   --orange: #fd7702;
   --yellow: #ffbb00;
+  --primary:#2f65ad;
 
   --background: var(--white);
-  --accent: var(--ash-black);
+  --accent: var(--primary);
 
   margin: 0;
   padding: 0;
