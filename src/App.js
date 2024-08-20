@@ -1,11 +1,6 @@
 import React, { Suspense, useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  MotionValue,
-} from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { Box } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AboutUs from "./components/AboutUs";
@@ -29,11 +24,24 @@ function SectionWrapper({ id, Component }) {
   const y = useParallax(scrollYProgress, 300);
 
   return (
-    <section>
-      <div ref={ref}>
+    <section ref={ref}>
+      <Box
+        id={id}
+        sx={{
+          height: "100vh",
+          backgroundColor: "#f0f4ff ",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          textAlign: "center",
+          margin: "50px 20px",
+          padding: "20px",
+        }}
+      >
         <Component />
-      </div>
-      <motion.h2 style={{ y }}>{`#${id}`}</motion.h2>
+      </Box>
+      {/* <motion.h2 style={{ y }}>{`#${id}`}</motion.h2> */}
     </section>
   );
 }
@@ -42,25 +50,23 @@ function App() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
-    damping: 30,
+    damping: 20,
     restDelta: 0.001,
   });
 
   return (
     <>
       <Navbar />
-
       <Suspense fallback={<div>Loading...</div>}>
-        <SectionWrapper id={"HeroSection"} Component={HeroSection} />
-        <SectionWrapper id={"AboutUs"} Component={AboutUs} />
-        <SectionWrapper id={"Services"} Component={Services} />
-        <SectionWrapper id={"Team"} Component={Team} />
-        <SectionWrapper id={"Testimonials"} Component={Testimonials} />
-        <SectionWrapper id={"Contact"} Component={ContactForm} />
+        <SectionWrapper id={"home"} Component={HeroSection} />
+        <SectionWrapper id={"about"} Component={AboutUs} />
+        <SectionWrapper id={"services"} Component={Services} />
+        <SectionWrapper id={"team"} Component={Team} />
+        <SectionWrapper id={"testimonials"} Component={Testimonials} />
+        <SectionWrapper id={"contact"} Component={ContactForm} />
       </Suspense>
-
-      <motion.div className="progress" style={{ scaleX }} />
       <Footer />
+      <motion.div className="progress" style={{ scaleX }} />
     </>
   );
 }

@@ -1,23 +1,10 @@
 import React from "react";
-import { Box, Typography, Card, CardContent } from "@mui/material";
+import { Typography, Card, CardContent } from "@mui/material";
 import { motion } from "framer-motion";
 
 function AboutUs() {
   return (
-    <Box
-      id="about"
-      sx={{
-        height: "100vh",
-        backgroundColor: "#f0f4ff ",
-        backgroundSize: "cover",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        textAlign: "center",
-        margin: "5px 0",
-      }}
-    >
+    <>
       <motion.div
         initial={{ x: -100 }}
         animate={{ x: 0 }}
@@ -61,7 +48,7 @@ function AboutUs() {
           </CardContent>
         </Card>
       </motion.div>
-    </Box>
+    </>
   );
 }
 

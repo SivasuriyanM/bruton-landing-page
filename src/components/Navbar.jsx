@@ -59,7 +59,7 @@ function Navbar() {
                 open={drawerOpen}
                 onClose={handleDrawerToggle}
               >
-                <List>
+                <List style={{ flexDirection: "column" }}>
                   {menuItems.map((item, index) => (
                     <ListItem button key={index} onClick={handleDrawerToggle}>
                       <Button color="inherit" key={index} href={item.link}>

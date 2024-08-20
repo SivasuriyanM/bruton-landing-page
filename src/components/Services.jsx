@@ -1,11 +1,13 @@
-import React, { useRef } from "react";
-import { Grid, Card, CardContent, Typography } from "@mui/material";
-import { motion, useScroll } from "framer-motion";
+import React from "react";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 import "../styles/service.css";
 
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 function Services() {
-  const ref = useRef(null);
-  const { scrollXProgress } = useScroll({ container: ref });
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const services = [
     {
       name: "Custom Software Development",
@@ -77,25 +79,51 @@ function Services() {
 
   return (
     <>
-      <ul ref={ref}>
-        {services.map((service) => (
-          <li>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Card>
-                <CardContent>
-                  <Typography variant="h5">{service.name}</Typography>
-                  <Typography variant="body2" sx={{ mt: 2 }}>
-                    {service.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </li>
-        ))}
-      </ul>
+      {isMobile ? (
+        <>
+          <Grid container direction="column" spacing={6}>
+            {services.map((service, index) => (
+              <Grid key={index} item xs="auto">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.1 }}
+                >
+                  <Card className="card">
+                    <CardContent>
+                      <Typography variant="h5">{service.name}</Typography>
+                      <Typography variant="body2">
+                        {service.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
+        </>
+      ) : (
+        <>
+          <Grid container spacing={6}>
+            {services.map((service, index) => (
+              <Grid key={index} item xs={4}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.1 }}
+                >
+                  <Card className="card">
+                    <CardContent>
+                      <Typography variant="h5">{service.name}</Typography>
+                      <Typography variant="body2">
+                        {service.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
+        </>
+      )}
     </>
   );
 }

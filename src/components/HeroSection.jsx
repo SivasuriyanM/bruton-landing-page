@@ -1,21 +1,10 @@
 import React from "react";
-import { Box, Typography, Button, Grid } from "@mui/material";
+import { Typography, Button, Grid } from "@mui/material";
 import { motion } from "framer-motion";
 
 function HeroSection() {
   return (
-    <Box
-      id="hero"
-      sx={{
-        height: "100vh",
-        backgroundColor: "#f0f4ff ",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        textAlign: "center",
-      }}
-    >
+    <>
       <Grid
         container
         style={{ backgroundColor: "#2f65ad", padding: "50px", color: "white" }}
@@ -44,7 +33,7 @@ function HeroSection() {
           </motion.div>
         </Grid>
       </Grid>
-    </Box>
+    </>
   );
 }
 

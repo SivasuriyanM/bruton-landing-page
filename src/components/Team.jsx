@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  Avatar,
-} from "@mui/material";
+import { Grid, Card, CardContent, Typography, Avatar } from "@mui/material";
 import { motion } from "framer-motion";
 const teamMembers = [
   {
@@ -23,47 +16,32 @@ const teamMembers = [
 
 function Team() {
   return (
-    <Box
-      id="team"
-      sx={{
-        height: "100vh",
-        backgroundColor: "#f0f4ff ",
-        backgroundSize: "cover",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        textAlign: "center",
-        margin: "5px 0",
-      }}
-    >
-      <div style={{ marginTop: "30px" }}>
-        <Typography variant="h4" gutterBottom>
-          Meet Our Team
-        </Typography>
-        <Grid container spacing={3}>
-          {teamMembers.map((member, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <motion.div whileHover={{ scale: 1.1 }}>
-                <Card>
-                  <CardContent style={{ textAlign: "center" }}>
-                    <Avatar
-                      src={member.image}
-                      alt={member.name}
-                      style={{ width: 100, height: 100, margin: "0 auto" }}
-                    />
-                    <Typography variant="h6" style={{ marginTop: "10px" }}>
-                      {member.name}
-                    </Typography>
-                    <Typography variant="body2">{member.role}</Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
-      </div>
-    </Box>
+    <>
+      <Typography variant="h4" gutterBottom>
+        Meet Our Team
+      </Typography>
+      <Grid container justifyContent="center" alignItems="center" spacing={6}>
+        {teamMembers.map((member, index) => (
+          <Grid item xs={12} md={4} key={index}>
+            <motion.div whileHover={{ scale: 1.2 }}>
+              <Card>
+                <CardContent style={{ textAlign: "center" }}>
+                  <Avatar
+                    src={member.image}
+                    alt={member.name}
+                    style={{ width: 100, height: 100, margin: "0 auto" }}
+                  />
+                  <Typography variant="h6" style={{ marginTop: "10px" }}>
+                    {member.name}
+                  </Typography>
+                  <Typography variant="body2">{member.role}</Typography>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </Grid>
+        ))}
+      </Grid>
+    </>
   );
 }
 
