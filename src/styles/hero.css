@@ -8,3 +8,7 @@
   transform: translate(-50%, -50%);
   z-index: -1;
 }
+.grid{
+  background-color: "#2f65ad";
+  backdrop-filter: blur(1px);
+}

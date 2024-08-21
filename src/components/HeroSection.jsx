@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Button, Grid } from "@mui/material";
 import { motion } from "framer-motion";
-import Hero_bg from "../assets/video/Hero_background.mp4";
+import Hero_bg from "../assets/video/bg.mp4";
 import "../styles/hero.css";
 
 function HeroSection() {
@@ -12,10 +12,10 @@ function HeroSection() {
           position: "fixed",
           width: "100%",
           height: "100vh",
-          overflow: "hidden",
+
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: "start",
+          alignItems: "start",
           color: "white",
           textAlign: "center",
         }}
@@ -26,18 +26,25 @@ function HeroSection() {
         </video>
         <Box
           sx={{
-            position: "fixed",
+            overflow: "hidden",
+            position: "relative",
+
             zIndex: 1,
             padding: { xs: "20px", sm: "40px", md: "60px" },
           }}
         >
           <Grid
+            className="grid"
             container
             sx={{
-              backgroundColor: "#2f65ad",
-              padding: "50px",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "60vw",
+              height: "90vh",
+
+              margin: "0",
               color: "white",
-              opacity: 0.9,
+              opacity: 1,
             }}
           >
             <Grid item xs={12} md={12}>

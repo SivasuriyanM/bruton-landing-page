@@ -1,5 +1,5 @@
 import React, { Suspense, useRef } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { Box } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -14,15 +14,13 @@ import "./App.css";
 const HeroSection = React.lazy(() => import("./components/HeroSection"));
 
 // Parallax hook for motion effects
-function useParallax(value, distance) {
-  return useTransform(value, [0, 1], [-distance, distance]);
-}
+// function useParallax(value, distance) {
+//   return useTransform(value, [0, 1], [-distance, distance]);
+// }
 
 // Parallax effect wrapper for each section
 function SectionWrapper({ id, Component }) {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
-  const y = useParallax(scrollYProgress, 300);
 
   return (
     <section ref={ref}>
