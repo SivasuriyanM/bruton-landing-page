@@ -37,7 +37,7 @@ function ContactForm() {
   );
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="contact">
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Typography variant="h4">Contact Us</Typography>

@@ -1,13 +1,24 @@
 import React from "react";
-import { Card, CardContent, Grid, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Avatar,
+  CardHeader,
+  CardMedia,
+  Box,
+} from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import { motion } from "framer-motion";
 import "../styles/service.css";
+import logo0 from "../assets/images/entsol.gif";
+import logo1 from "../assets/images/hacker.gif";
+import logo2 from "../assets/images/laptop.gif";
+import logo3 from "../assets/images/responsive.gif";
+import logo4 from "../assets/images/secure.gif";
+import logo5 from "../assets/images/update.gif";
 
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
 function Services() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const services = [
     {
       name: "Custom Software Development",
@@ -19,6 +30,7 @@ function Services() {
         "Scalable architecture",
         "Robust security protocols",
       ],
+      image: logo2,
     },
     {
       name: "Web and Mobile Development",
@@ -30,6 +42,7 @@ function Services() {
         "Cross-platform compatibility",
         "SEO optimization",
       ],
+      image: logo3,
     },
     {
       name: "Enterprise Solutions",
@@ -41,6 +54,7 @@ function Services() {
         "Custom CRM systems",
         "Seamless operations management",
       ],
+      image: logo0,
     },
     {
       name: "Cloud Solutions and DevOps",
@@ -52,6 +66,7 @@ function Services() {
         "Continuous integration and deployment",
         "Automated monitoring and maintenance",
       ],
+      image: logo4,
     },
     {
       name: "Cybersecurity Services",
@@ -63,6 +78,7 @@ function Services() {
         "Compliance with industry regulations",
         "Data protection and privacy",
       ],
+      image: logo1,
     },
     {
       name: "IT Consulting",
@@ -74,57 +90,78 @@ function Services() {
         "Risk assessment and management",
         "IT infrastructure consulting",
       ],
+      image: logo5,
     },
   ];
 
   return (
-    <>
-      {isMobile ? (
-        <>
-          <Grid container direction="column" spacing={6}>
-            {services.map((service, index) => (
-              <Grid key={index} item xs="auto">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.1 }}
-                >
-                  <Card className="card">
-                    <CardContent>
-                      <Typography variant="h5">{service.name}</Typography>
-                      <Typography variant="body2">
-                        {service.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-        </>
-      ) : (
-        <>
-          <Grid container spacing={6}>
-            {services.map((service, index) => (
-              <Grid key={index} item xs={4}>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.1 }}
-                >
-                  <Card className="card">
-                    <CardContent>
-                      <Typography variant="h5">{service.name}</Typography>
-                      <Typography variant="body2">
-                        {service.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-        </>
-      )}
-    </>
+    <Box
+      id="services"
+      sx={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        scrollSnapAlign: "center",
+        perspective: "500px",
+        margin: "150px 0 0 0",
+      }}
+    >
+      <Typography variant="h4" gutterBottom>
+        Our Main Areas
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: { xs: "20px", sm: "40px", md: "60px" },
+          overflowY: "auto", // Enable vertical scrolling
+          maxHeight: "100%", // Restrict height to enable scrolling within the box
+        }}
+      >
+        <Grid
+          container
+          spacing={2}
+          sx={{
+            margin: { xs: "500px 0 0 0", md: "0", sm: "0" },
+          }}
+        >
+          {services.map((service, index) => (
+            <Grid key={index} item xs={12} sm={6} md={4}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.1 }}
+              >
+                <Card className="card">
+                  <CardHeader
+                    avatar={
+                      <Avatar aria-label="logo">
+                        <CardMedia
+                          component="img"
+                          height="194"
+                          image={service.image}
+                          alt={service.name}
+                        />
+                      </Avatar>
+                    }
+                    title={service.name}
+                    subheader={service.key_features[0]}
+                  />
+                  <CardContent>
+                    <Typography variant="body2">
+                      {service.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    </Box>
   );
 }
 

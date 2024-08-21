@@ -17,7 +17,7 @@ const teamMembers = [
 function Team() {
   return (
     <>
-      <Typography variant="h4" gutterBottom>
+      <Typography id="team" variant="h4" gutterBottom>
         Meet Our Team
       </Typography>
       <Grid container justifyContent="center" alignItems="center" spacing={6}>

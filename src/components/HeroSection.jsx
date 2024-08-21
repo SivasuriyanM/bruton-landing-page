@@ -8,11 +8,11 @@ function HeroSection() {
   return (
     <>
       <Box
+        id="home"
         sx={{
-          position: "fixed",
+          position: "relative",
           width: "100%",
           height: "100vh",
-
           display: "flex",
           justifyContent: "start",
           alignItems: "start",
@@ -28,7 +28,6 @@ function HeroSection() {
           sx={{
             overflow: "hidden",
             position: "relative",
-
             zIndex: 1,
             padding: { xs: "20px", sm: "40px", md: "60px" },
           }}
@@ -41,7 +40,6 @@ function HeroSection() {
               alignItems: "center",
               width: "60vw",
               height: "90vh",
-
               margin: "0",
               color: "white",
               opacity: 1,

@@ -33,6 +33,7 @@ function Testimonials() {
   return (
     <>
       <motion.div
+        id="testimonials"
         initial={{ x: 100 }}
         animate={{ x: 0 }}
         transition={{ duration: 1 }}

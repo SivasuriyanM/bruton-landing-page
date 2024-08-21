@@ -1,9 +1,18 @@
 import React from "react";
-import { Box, Typography, Grid } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Grid,
+  // List,
+  // ListItem,
+  // ListItemButton,
+  // ListItemIcon,
+  // ListItemText,
+} from "@mui/material";
 import work from "../assets/images/Working.jpg";
 import logo from "../assets/images/download.png";
 import { Image } from "mui-image";
-
+// import StarIcon from "@mui/icons-material/Star";
 import "../styles/about.css";
 
 function AboutUs() {
@@ -15,7 +24,6 @@ function AboutUs() {
         height: "auto",
         flexDirection: "column",
         textAlign: "start",
-        padding: { xs: "20px", sm: "40px", md: "60px" },
       }}
     >
       <Grid container spacing={2}>
@@ -47,14 +55,42 @@ function AboutUs() {
             technology solutions.
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={12} md={4} className="about-content2">
-          <Image
-            src={work}
-            style={{
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={4}
+          className="about-content2"
+          sx={{ textAlign: "center" }}
+        >
+          {/* <Typography variant="h4" sx={{ mb: 2 }}>
+            Values
+          </Typography>
+          <List
+            sx={{
               width: "100%",
-              height: "100%",
+              color: "white",
             }}
-          />
+            aria-label="Values"
+          >
+            {[
+              "Innovation",
+              "Quasty",
+              "Collaboration",
+              "Integrity",
+              "Growth",
+            ].map((value, index) => (
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <StarIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={value} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List> */}
+          <Image src={work} />
         </Grid>
       </Grid>
     </Box>

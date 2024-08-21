@@ -25,17 +25,8 @@ function SectionWrapper({ id, Component }) {
   return (
     <section ref={ref}>
       <Box
-        id={id}
         sx={{
-          height: "100vh",
-
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          textAlign: "center",
-          margin: "50px 20px",
-          padding: "20px",
+          display: "block",
         }}
       >
         <Component />

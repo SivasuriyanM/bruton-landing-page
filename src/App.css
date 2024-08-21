@@ -90,11 +90,6 @@ section {
 
 section > div {
   width: 100vw;
-
-
-  margin: 20px;
-  position: relative;
-  overflow: hidden;
 }
 
 img {
