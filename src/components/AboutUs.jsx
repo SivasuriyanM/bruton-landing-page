@@ -9,7 +9,7 @@ import {
   // ListItemIcon,
   // ListItemText,
 } from "@mui/material";
-import work from "../assets/images/Working.jpg";
+// import work from "../assets/images/Working.jpg";
 import logo from "../assets/images/download.png";
 import { Image } from "mui-image";
 // import StarIcon from "@mui/icons-material/Star";
@@ -18,6 +18,7 @@ import "../styles/about.css";
 function AboutUs() {
   return (
     <Box
+      id="about"
       className="about-container"
       sx={{
         width: "100%",
@@ -63,34 +64,15 @@ function AboutUs() {
           className="about-content2"
           sx={{ textAlign: "center" }}
         >
-          {/* <Typography variant="h4" sx={{ mb: 2 }}>
+          <Typography variant="h4" sx={{ mb: 2 }}>
             Values
           </Typography>
-          <List
-            sx={{
-              width: "100%",
-              color: "white",
-            }}
-            aria-label="Values"
-          >
-            {[
-              "Innovation",
-              "Quasty",
-              "Collaboration",
-              "Integrity",
-              "Growth",
-            ].map((value, index) => (
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <StarIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={value} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List> */}
-          <Image src={work} />
+
+          {["Innovation", "Quasty", "Collaboration", "Integrity", "Growth"].map(
+            (value, index) => (
+              <Typography>{value}</Typography>
+            )
+          )}
         </Grid>
       </Grid>
     </Box>
