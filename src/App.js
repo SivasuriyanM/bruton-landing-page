@@ -39,16 +39,17 @@ function App() {
 
   return (
     <>
-      <Navbar />
       <Suspense fallback={<div>Loading...</div>}>
+        <Navbar />
         <SectionWrapper id={"home"} Component={HeroSection} />
         <SectionWrapper id={"about"} Component={AboutUs} />
         <SectionWrapper id={"services"} Component={Services} />
         <SectionWrapper id={"team"} Component={Team} />
         <SectionWrapper id={"testimonials"} Component={Testimonials} />
         <SectionWrapper id={"contact"} Component={ContactForm} />
+        <Footer />
       </Suspense>
-      <Footer />
+
       <motion.div className="progress" style={{ scaleX }} />
     </>
   );

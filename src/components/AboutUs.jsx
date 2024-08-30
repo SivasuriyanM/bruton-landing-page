@@ -42,14 +42,12 @@ function AboutUs() {
           className="about-content0 grid"
         >
           <Image
-            style={{ width: "80px", height: "80px", top: "-80px" }}
+            style={{ width: "8vw", height: "8vw", top: "-80px" }}
             src={logo}
           />
         </Grid>
         <Grid item xs={10} sm={10} md={6} className="about-content grid">
-          <Typography variant="h4" sx={{ mb: 2 }}>
-            About US
-          </Typography>
+          <Typography variant="h4">About US</Typography>
 
           <Typography variant="h6" sx={{ mb: 2 }}>
             At BRUTON Technologies, we pride ourselves on being a trailblazer in
@@ -70,7 +68,7 @@ function AboutUs() {
             " Success is the sum of small efforts - repeated day in and day out.
             "
           </Typography>
-          <Typography variant="h6">- Our Ceo</Typography>
+          <Typography variant="h6">- Robert Collier</Typography>
         </Grid>
       </Grid>
     </Box>

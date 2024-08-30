@@ -63,8 +63,13 @@ function HeroSection() {
                 </Typography>
               </motion.div>
               <motion.div whileHover={{ scale: 1.1 }}>
-                <Button variant="contained" color="primary" sx={{ mt: 4 }}>
-                  Get Started
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{ mt: 4 }}
+                  href="#contact"
+                >
+                  Contact Us
                 </Button>
               </motion.div>
             </Grid>
