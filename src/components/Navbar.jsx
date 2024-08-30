@@ -8,6 +8,7 @@ import {
   Drawer,
   List,
   ListItem,
+  Grid,
 } from "@mui/material";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -39,21 +40,36 @@ function Navbar() {
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
-            BRUTON
-          </Typography>
-
           {/* Mobile View: Display Drawer */}
           {isMobile ? (
             <>
-              <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                onClick={handleDrawerToggle}
+              <Grid
+                container
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-evenly",
+                  alignItems: "center",
+                }}
+                spacing={6}
               >
-                =
-              </IconButton>
+                <Grid item>
+                  <IconButton
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    onClick={handleDrawerToggle}
+                  >
+                    =
+                  </IconButton>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h6" style={{ flexGrow: 1 }}>
+                    BRUTON
+                  </Typography>
+                </Grid>
+              </Grid>
+
               <Drawer
                 anchor="right"
                 open={drawerOpen}
@@ -73,11 +89,29 @@ function Navbar() {
           ) : (
             // Desktop View: Display Buttons
             <>
-              {menuItems.map((item, index) => (
-                <Button color="inherit" key={index} href={item.link}>
-                  {item.label}
-                </Button>
-              ))}
+              <Grid
+                container
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-evenly",
+                  alignItems: "center",
+                }}
+                spacing={6}
+              >
+                <Grid item>
+                  <Typography variant="h6" style={{ flexGrow: 1 }}>
+                    BRUTON
+                  </Typography>
+                </Grid>
+                <Grid item color="inherit">
+                  {menuItems.map((item, index) => (
+                    <Button color="inherit" key={index} href={item.link}>
+                      {item.label}
+                    </Button>
+                  ))}
+                </Grid>
+              </Grid>
             </>
           )}
         </motion.div>

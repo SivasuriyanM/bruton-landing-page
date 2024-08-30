@@ -23,6 +23,7 @@ function AboutUs() {
       sx={{
         width: "100%",
         height: "auto",
+        display: "flex",
         flexDirection: "column",
         textAlign: "start",
       }}
@@ -38,13 +39,14 @@ function AboutUs() {
             justifyContent: "flex-start",
             alignItem: "flex-start",
           }}
+          className="about-content0 grid"
         >
           <Image
             style={{ width: "80px", height: "80px", top: "-80px" }}
             src={logo}
           />
         </Grid>
-        <Grid item xs={10} sm={10} md={6} className="about-content">
+        <Grid item xs={10} sm={10} md={6} className="about-content grid">
           <Typography variant="h4" sx={{ mb: 2 }}>
             About US
           </Typography>
@@ -61,18 +63,14 @@ function AboutUs() {
           xs={12}
           sm={12}
           md={4}
-          className="about-content2"
+          className="about-content2 grid"
           sx={{ textAlign: "center" }}
         >
           <Typography variant="h4" sx={{ mb: 2 }}>
-            Values
+            " Success is the sum of small efforts - repeated day in and day out.
+            "
           </Typography>
-
-          {["Innovation", "Quasty", "Collaboration", "Integrity", "Growth"].map(
-            (value, index) => (
-              <Typography>{value}</Typography>
-            )
-          )}
+          <Typography variant="h6">- Our Ceo</Typography>
         </Grid>
       </Grid>
     </Box>

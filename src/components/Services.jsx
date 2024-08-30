@@ -17,6 +17,8 @@ import logo2 from "../assets/images/laptop.gif";
 import logo3 from "../assets/images/responsive.gif";
 import logo4 from "../assets/images/secure.gif";
 import logo5 from "../assets/images/update.gif";
+import Divider from "@mui/material/Divider";
+import "../styles/team.css";
 
 function Services() {
   const services = [
@@ -111,6 +113,8 @@ function Services() {
       <Typography variant="h4" gutterBottom>
         Our Main Areas
       </Typography>
+      <Divider component="li" sx={{ width: "100%", listStyle: "none" }} />
+
       <Box
         sx={{
           display: "flex",
@@ -135,7 +139,7 @@ function Services() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.1 }}
               >
-                <Card className="card">
+                <Card className="card team">
                   <CardHeader
                     avatar={
                       <Avatar aria-label="logo">

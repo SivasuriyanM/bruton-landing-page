@@ -13,12 +13,6 @@ import "./App.css";
 
 const HeroSection = React.lazy(() => import("./components/HeroSection"));
 
-// Parallax hook for motion effects
-// function useParallax(value, distance) {
-//   return useTransform(value, [0, 1], [-distance, distance]);
-// }
-
-// Parallax effect wrapper for each section
 function SectionWrapper({ id, Component }) {
   const ref = useRef(null);
 
@@ -31,7 +25,6 @@ function SectionWrapper({ id, Component }) {
       >
         <Component />
       </Box>
-      {/* <motion.h2 style={{ y }}>{`#${id}`}</motion.h2> */}
     </section>
   );
 }

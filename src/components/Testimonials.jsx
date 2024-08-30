@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Card, CardContent, Grid, Button } from "@mui/material";
+import {
+  Typography,
+  Card,
+  CardContent,
+  Grid,
+  Button,
+  Box,
+} from "@mui/material";
 import { motion } from "framer-motion";
+import "../styles/testimonials.css";
+import Divider from "@mui/material/Divider";
+import test from "../assets/video/Hero_background.mp4";
+
 const testimonialsData = [
   {
     name: "Alice Brown",
@@ -32,46 +43,66 @@ function Testimonials() {
 
   return (
     <>
-      <motion.div
+      <Box
         id="testimonials"
-        initial={{ x: 100 }}
-        animate={{ x: 0 }}
-        transition={{ duration: 1 }}
+        sx={{
+          position: "relative",
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+          textAlign: "center",
+          flexDirection: "column",
+        }}
       >
-        <Typography variant="h4" gutterBottom>
-          What Our Clients Say
-        </Typography>
-      </motion.div>
-      <Grid container justifyContent="center">
-        <Grid item xs={12} md={8}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6">
-                "{testimonialsData[currentTestimonial].feedback}"
-              </Typography>
-              <Typography
-                variant="body2"
-                style={{ marginTop: "10px", fontStyle: "italic" }}
-              >
-                - {testimonialsData[currentTestimonial].name}
-              </Typography>
-            </CardContent>
-          </Card>
+        <video className="hero-video" autoPlay loop muted>
+          <source src={test} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        <motion.div
+          initial={{ x: 100 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <Typography variant="h4" gutterBottom>
+            What Our Clients Say
+            <Divider component="li" sx={{ width: "100%", listStyle: "none" }} />
+          </Typography>
+        </motion.div>
+        <Grid container justifyContent="center" alignItems="center">
+          <Grid item xs={12} md={8}>
+            <Card className="testimonials">
+              <CardContent>
+                <Typography variant="h6">
+                  "{testimonialsData[currentTestimonial].feedback}"
+                </Typography>
+                <Typography
+                  variant="body2"
+                  style={{ marginTop: "10px", fontStyle: "italic" }}
+                >
+                  - {testimonialsData[currentTestimonial].name}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
-      </Grid>
-      <Grid container justifyContent="center" style={{ marginTop: "20px" }}>
-        {testimonialsData.map((_, index) => (
-          <Button
-            key={index}
-            variant={currentTestimonial === index ? "contained" : "outlined"}
-            color="primary"
-            style={{ margin: "0 5px" }}
-            onClick={() => setCurrentTestimonial(index)}
-          >
-            {index + 1}
-          </Button>
-        ))}
-      </Grid>
+        <Grid container justifyContent="center" style={{ marginTop: "20px" }}>
+          {testimonialsData.map((_, index) => (
+            <Button
+              key={index}
+              variant={currentTestimonial === index ? "contained" : "outlined"}
+              color="primary"
+              style={{ margin: "0 5px" }}
+              onClick={() => setCurrentTestimonial(index)}
+            >
+              {index + 1}
+            </Button>
+          ))}
+        </Grid>
+      </Box>
     </>
   );
 }

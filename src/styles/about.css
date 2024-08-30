@@ -1,17 +1,25 @@
 .about-container{
     background-color: #2f65ad;
-    
+    padding: 50px 0 ;
     color:white;
+    /* box-shadow: 10px 10px 5px lightblue; */
 }
-
-/* .about-logo{
-    width: 10px;
-    height: 30px;
-    top: -130px;
+.about-content{
+    border-right: #fff 2px dashed;
+}
+.grid{
+    padding: 50px;
 }
 @media (max-width:640px){
-    .about-logo{
-        width: 40px;
-        height: 40px;
+    .about-content{
+        border-right: none;
+        border-bottom: #fff 2px dashed;
     }
-} */
+    .about-content0{
+        border-bottom: #fff 2px dashed;
+    }
+    .grid{
+        padding: 50px 0;
+    }
+
+} 
